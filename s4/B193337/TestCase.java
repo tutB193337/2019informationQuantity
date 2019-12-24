@@ -108,6 +108,21 @@ public class TestCase {
 	    System.out.println("Exception occurred: STOP");
 	}
 
+	try {
+	    FrequencerInterface  myObject;
+	    int freq;
+	    System.out.println("checking s4.B193337.Frequencer (white box)");
+	    myObject = new s4.B193337.Frequencer();
+	    myObject.setSpace("AAA".getBytes());
+	    myObject.setTarget("AA".getBytes());
+	    freq = myObject.frequency();
+	    System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
+		if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+	}
+	catch(Exception e) {
+	    System.out.println("Exception occurred: STOP");
+	}
+
 	/*
 	try {
 	    InformationEstimatorInterface myObject;
