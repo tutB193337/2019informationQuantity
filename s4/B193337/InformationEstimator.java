@@ -44,24 +44,16 @@ public class InformationEstimator implements InformationEstimatorInterface{
 		double [] result = new double[myTarget.length+1];
 		result[0] = (double)0.0;
 		result[myTarget.length] = Double.MAX_VALUE;
-
 		for(int i = 0; i < myTarget.length; i++){
-//			System.err.println("i="+i);
 			double candi = (double)0.0;
 			double minimum = Double.MAX_VALUE;
 			for(int j = 0; j <= i; j++){
-//				System.err.println("j="+j);
-				int end = i+1;
-//				System.out.println("("+j+","+end+")");
 				myFrequencer.setTarget(subBytes(myTarget, j, i+1));
-//				System.err.println("befIP="+result[i]);
 				candi = result[j] + iq(myFrequencer.frequency());
-//				System.err.println(candi);
 				if(candi < minimum) minimum = candi; 
 			}
 			result[i+1] = minimum;
 		}
-
 		return result[myTarget.length];
 	}
 
@@ -98,7 +90,7 @@ public class InformationEstimator implements InformationEstimatorInterface{
 				// System.out.print("("+start+","+end+")");
 				myFrequencer.setTarget(subBytes(myTarget, start, end));
 				value1 = value1 + iq(myFrequencer.frequency());
-				start = end;
+	 			start = end;
 			}
 			// System.out.println(" "+ value1);
 
