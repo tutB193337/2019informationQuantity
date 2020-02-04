@@ -172,8 +172,9 @@ public class Frequencer implements FrequencerInterface{
         //
         // ここに比較のコードを書け 
         //
+
         for(int l = 0; l < k-j; l++){
-            if( mySpace.length < l ){
+            if( mySpace.length - i <= l ){
                 return -1;
             }else if( mySpace[i+l] == myTarget[j+l] ){
                 if( l == k-j+1 ){
@@ -214,6 +215,8 @@ public class Frequencer implements FrequencerInterface{
         //                                                                          
         // ここにコードを記述せよ。                                                 
         //                                               
+
+        //////ここを二分探査にする
         for(int i = 0; i < suffixArray.length; i++){
             if(targetCompare(suffixArray[i],start,end) == 0) return i;
         }
@@ -245,6 +248,8 @@ public class Frequencer implements FrequencerInterface{
         //                                                                   
         //　ここにコードを記述せよ                                           
         //                                                                   
+
+        //////ここを二分探査にする
         for(int i = suffixArray.length-1; i >= 0; i--){
             if(targetCompare(suffixArray[i],start,end) == 0) return i+1;
         }
