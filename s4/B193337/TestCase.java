@@ -31,8 +31,12 @@ public interface InformationEstimatorInterface{
 
 public class TestCase {
     public static void main(String[] args) {
+
+	long startTime = System.nanoTime();
+
 	int c;
 	c = 0;
+
 	try {
 	    FrequencerInterface  myObject;
 	    int freq;
@@ -125,7 +129,7 @@ public class TestCase {
 
 	try {
 	    InformationEstimatorInterface myObject;
-	    double value;
+		double value;
 	    System.out.println("checking s4.slow.InformationEstimator");
 	    myObject = new InformationEstimator();
 	    myObject.setSpace("3210321001230123".getBytes());
@@ -146,7 +150,12 @@ public class TestCase {
 	    System.out.println("Exception occurred: STOP");
 	    c++;
 	}
+
 	if(c == 0) { System.out.println("TestCase OK"); }
 	
+	// 処理後の時刻を取得
+	long endTime = System.nanoTime();
+	System.out.println("Run time：" + (endTime - startTime) + " ns");
+
 	}
 }	    

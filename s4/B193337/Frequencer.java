@@ -34,9 +34,9 @@ public class Frequencer implements FrequencerInterface{
 
 	private void printSuffixArray() {
         if(spaceReady) {
-            for(int i=0; i< mySpace.length; i++) {
+            for(int i = 0; i < mySpace.length; i++) {
                 int s = suffixArray[i];
-                for(int j=s;j<mySpace.length;j++) {
+                for(int j = s; j < mySpace.length; j++) {
                     System.out.write(mySpace[j]);
                 }
                 System.out.write('\n');
@@ -67,21 +67,21 @@ public class Frequencer implements FrequencerInterface{
         }else if( mySpace[i] < mySpace[j] ){
             return -1;
         }else{
-            if(i >= mySpace.length-1 && j >= mySpace.length-1 ) return 0;
+            if(i >= mySpace.length - 1 && j >= mySpace.length - 1) return 0;
                 else if(i >= mySpace.length-1 ) return -1;
                 else if(j >= mySpace.length-1 ) return 1;
                 else return suffixCompare(i+1, j+1);
         }
 	}
 	
-	public void setSpace(byte []space) { 
+	public void setSpace(byte[] space) { 
         // suffixArrayの前処理は、setSpaceで定義せよ。
         mySpace = space;
         if(mySpace.length > 0) spaceReady = true;
         // First, create unsorted suffix array.
         suffixArray = new int[space.length];
         // put all suffixes in suffixArray.
-        for(int i = 0; i< space.length; i++) {
+        for(int i = 0,len = space.length; i < len; i++) {
             suffixArray[i] = i; // Please note that each suffix is expressed by one integer.      
         }
         //                                            
@@ -92,10 +92,10 @@ public class Frequencer implements FrequencerInterface{
     }
     
     private void quickSort(int[] d, int left, int right) {
-        if(left>=right){
+        if(left >= right){
             return;
         }
-        int p = d[(left+right)/2];
+        int p = d[(left + right) >> 1]; // (left + right) / 2
         int l = left;
         int r = right;
         int tmp;
@@ -186,7 +186,7 @@ public class Frequencer implements FrequencerInterface{
         // ここに比較のコードを書け 
         //
 
-        for(int l = 0; l < k-j; l++){
+        for(int l = 0,m = k-j; l < m; l++){
             if( mySpace.length - i <= l ){
                 return -1;
             }else if( mySpace[i+l] == myTarget[j+l] ){
@@ -233,7 +233,7 @@ public class Frequencer implements FrequencerInterface{
         int lower = 0; // 下限
         int upper = suffixArray.length - 1; // 上限
         while(lower <= upper){
-            int mid = (lower + upper) / 2;
+            int mid = (lower + upper) >> 1; // (lower + upper) / 2
             if(targetCompare(suffixArray[mid],start,end) == 0){
                 if(mid == 0 || targetCompare(suffixArray[mid-1],start,end) < 0){
                     pos = mid;
@@ -279,8 +279,9 @@ public class Frequencer implements FrequencerInterface{
         int pos = -1;
         int lower = 0; // 下限
         int upper = suffixArray.length - 1; // 上限
+        int mid;
         while(lower <= upper){
-            int mid = (lower + upper) / 2;
+            mid = (lower + upper) >> 1; // (lower + upper) / 2
             if(targetCompare(suffixArray[mid],start,end) == 0){
                 if(mid == suffixArray.length-1 || targetCompare(suffixArray[mid+1],start,end) > 0){
                     pos = mid + 1;
@@ -347,5 +348,4 @@ public class Frequencer implements FrequencerInterface{
 			System.out.println("Exception occurred: STOP");
 		}
     }
-}	    
-	    
+}
