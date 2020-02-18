@@ -41,6 +41,9 @@ public class InformationEstimator implements InformationEstimatorInterface{
     }
 
 	public double estimation(){
+		if (mySpace == null || mySpace.length <= 0) return Double.MAX_VALUE;
+        if (myTarget == null || myTarget.length <= 0) return 0.0;
+		if(mySpace == null) return Double.MAX_VALUE;
 		double [] result = new double[myTarget.length+1];
 		result[0] = (double)0.0;
 		result[myTarget.length] = Double.MAX_VALUE;

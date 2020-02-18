@@ -76,7 +76,8 @@ public class Frequencer implements FrequencerInterface{
 	
 	public void setSpace(byte []space) { 
         // suffixArrayの前処理は、setSpaceで定義せよ。
-        mySpace = space; if(mySpace.length>0) spaceReady = true;
+        mySpace = space;
+        if(mySpace.length > 0) spaceReady = true;
         // First, create unsorted suffix array.
         suffixArray = new int[space.length];
         // put all suffixes in suffixArray.
@@ -114,7 +115,8 @@ public class Frequencer implements FrequencerInterface{
     // ここから、指定する範囲のコードは変更してはならない。
 
     public void setTarget(byte [] target) {
-        myTarget = target; if(myTarget.length>0) targetReady = true;
+        myTarget = target;
+        if(myTarget.length > 0) targetReady = true;
     }
 
     public int frequency() {
